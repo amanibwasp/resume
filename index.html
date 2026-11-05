@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Андрей Морозов — Android-разработчик</title>
+  <meta name="description" content="Резюме Android-разработчика. 4 года 4 месяца опыта: Kotlin, Jetpack Compose, Firebase, Koin, WebSocket, JNI.">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Морозов — Android-разработчик">
+  <meta property="og:description" content="Резюме: 4 года 4 месяца опыта в Android-разработке. Kotlin, Jetpack Compose, Firebase, Koin.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563eb'/><text x='50' y='68' font-size='50' font-family='Arial,sans-serif' font-weight='700' fill='white' text-anchor='middle'>М</text></svg>">
+
+  <!-- Тема ставится до отрисовки, чтобы не было вспышки белого экрана -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = saved || (dark ? 'dark' : 'light');
+      } catch (e) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <button class="btn btn--icon" id="theme-toggle" type="button"
+            aria-label="Переключить тему" title="Переключить тему">
+      <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+      <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+    <button class="btn" id="print-btn" type="button" title="Сохранить в PDF">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 9V2h12v7"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8" rx="1"/>
+      </svg>
+      <span>PDF</span>
+    </button>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero__name">Андрей Морозов</h1>
+      <p class="hero__role">Android-разработчик</p>
+      <p class="hero__exp">4 года 4 месяца коммерческого опыта · Калининград</p>
+
+      <ul class="hero__contacts">
+        <li>
+          <a href="mailto:amanibwasp@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 6-10 7L2 6"/>
+            </svg>
+            amanibwasp@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="tel:+79114717374">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+            </svg>
+            +7 911 471-73-74
+          </a>
+        </li>
+        <li>
+          <a href="https://t.me/Morozov_MOA" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4Z"/>
+              <path d="M22 2 11 13"/>
+            </svg>
+            @Morozov_MOA
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ОПЫТ РАБОТЫ -->
+    <section class="section" id="experience">
+      <h2 class="section__title">Опыт работы</h2>
+
+      <article class="job">
+        <header class="job__head">
+          <h3 class="job__company">KODE</h3>
+          <p class="job__meta">
+            <span>06.2024 — настоящее время</span>
+            <span>Калининград</span>
+          </p>
+        </header>
+
+        <div class="project">
+          <h4 class="project__title">Картографический сервис</h4>
+          <ul class="project__list">
+            <li>Настроил ViewModel'и на работу в фоновых потоках, решив проблему с зависаниями в приложении</li>
+            <li>Добавлял кастомные layout-компоненты для экранов с картой и различных её состояний</li>
+            <li>Реализовал чаты на WebSocket: подключение, переподключение, обработка сообщений</li>
+            <li>Создал собственные Gradle-плагины: интеграция с Firebase Remote Config в рамках аудита feature-тогглов — валидация ключей между релизными сборками, запуск через manual job в GitLab CI</li>
+            <li>Добавлял интеграцию с C++ через JNI: обёртки, передача данных, обработка ошибок</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4 class="project__title">
+            КМР — приложение для парка развлечений
+            <span class="badge">ведущий разработчик</span>
+          </h4>
+          <ul class="project__list">
+            <li>Оптимизировал cold start, добавил кэширование сетевых ответов, вынес тяжёлые операции в фоновые потоки</li>
+            <li>Интегрировал SDK для отправки аналитики по всему приложению</li>
+            <li>Публиковал приложение в Google Play с предварительным внутренним тестированием и добавлением in-app updates</li>
+            <li>Внедрил Firebase Performance для отслеживания времени различных операций в production-коде</li>
+            <li>Разработал карту парка с метками и детальной информацией по аттракционам</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4 class="project__title">Приложение для покупки, скачивания и чтения школьных пособий</h4>
+          <ul class="project__list">
+            <li>Довёл проект с нуля до публикации в Google Play</li>
+            <li>Внедрил функционал скачивания и сохранения книг</li>
+            <li>Логика hard/soft update через Firebase Remote Config</li>
+            <li>Добавил флоу профиля, витрину книг, поиск с фильтрами, онбординг пользователей</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4 class="project__title">
+            ЛК для заявок, оплаты услуг и новостей электросетевого холдинга
+            <span class="badge">ведущий разработчик</span>
+          </h4>
+          <ul class="project__list">
+            <li>Работал с server-driven UI</li>
+            <li>Проводил работы по соответствию приложения требованиям ИБ со стороны заказчика</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4 class="project__title">
+            Сервис виртуальных сим-карт
+            <span class="badge">ведущий разработчик</span>
+          </h4>
+          <ul class="project__list">
+            <li>Сократил расхождения Android/iOS в реализации фич и соответствии требованиям аналитики</li>
+            <li>Реализовал «витрину» доступных планов, установку eSIM</li>
+            <li>Добавил покупку тарифов через различные платёжные сервисы</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <header class="job__head">
+          <h3 class="job__company">Phoaching</h3>
+          <p class="job__meta">
+            <span>07.2022 — 06.2024</span>
+          </p>
+        </header>
+
+        <div class="project">
+          <h4 class="project__title">
+            Мобильное приложение Phoaching
+            <span class="badge">ведущий разработчик</span>
+          </h4>
+          <ul class="project__list">
+            <li>Провёл модуляризацию проекта: выделил Core, Domain, Data и feature-модули, внедрил Koin и Orbit MVI</li>
+            <li>Создал клиент адаптивной персонализации с восстановлением сессий, обработкой конфликтов и графиками на Compose Canvas</li>
+            <li>Разработал трекер привычек с повторяющимися задачами, оценкой выполнения и нативными напоминаниями Android/iOS</li>
+            <li>Реализовал создание и прохождение авторских программ: расписания, задания, комментарии и ролевую модерацию</li>
+            <li>Интегрировал Firebase Push и мультимедиа: переходы из уведомлений, обмен файлами, воспроизведение через ExoPlayer и AVPlayer</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- НАВЫКИ -->
+    <section class="section" id="skills">
+      <h2 class="section__title">Навыки</h2>
+      <ul class="chips">
+        <li>Kotlin</li>
+        <li>Java</li>
+        <li>Jetpack Compose</li>
+        <li>Coroutines / Flow</li>
+        <li>MVVM / MVI</li>
+        <li>Orbit MVI</li>
+        <li>Koin</li>
+        <li>Модуляризация</li>
+        <li>Gradle (custom plugins)</li>
+        <li>GitLab CI</li>
+        <li>WebSocket</li>
+        <li>JNI / C++</li>
+        <li>Firebase (Remote Config, Performance, Push, Analytics)</li>
+        <li>ExoPlayer</li>
+        <li>Server-driven UI</li>
+        <li>Google Play Console</li>
+      </ul>
+    </section>
+
+    <!-- ОБРАЗОВАНИЕ -->
+    <section class="section" id="education">
+      <h2 class="section__title">Образование</h2>
+      <div class="edu">
+        <div>
+          <h3 class="edu__school">БФУ им. И. Канта</h3>
+          <p class="edu__degree">Бакалавриат</p>
+        </div>
+        <p class="edu__meta">09.2022 — 05.2026 · Калининград</p>
+      </div>
+    </section>
+
+    <!-- ЯЗЫКИ -->
+    <section class="section" id="languages">
+      <h2 class="section__title">Иностранные языки</h2>
+      <ul class="langs">
+        <li><span>Английский</span><span class="langs__level">C1 — Advanced</span></li>
+        <li><span>Русский</span><span class="langs__level">родной</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Морозов ·
+        <a href="mailto:amanibwasp@gmail.com">amanibwasp@gmail.com</a> ·
+        <a href="https://t.me/Morozov_MOA" target="_blank" rel="noopener">@Morozov_MOA</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

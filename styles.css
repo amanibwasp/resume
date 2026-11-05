@@ -1,0 +1,338 @@
+/* ---------- Переменные и темы ---------- */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --text: #14161a;
+  --text-soft: #5c6472;
+  --border: #e3e6eb;
+  --accent: #2563eb;
+  --accent-soft: #eaf0ff;
+  --maxw: 880px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e1014;
+  --surface: #16191f;
+  --text: #eceef2;
+  --text-soft: #98a0ad;
+  --border: #262a32;
+  --accent: #6d9bff;
+  --accent-soft: #17233d;
+}
+
+/* ---------- База ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.container {
+  width: min(var(--maxw), 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Кнопки в углу ---------- */
+.toolbar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: .5rem;
+  z-index: 10;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  height: 2.5rem;
+  padding: 0 .9rem;
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .06);
+  transition: border-color .15s, color .15s;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn--icon { width: 2.5rem; padding: 0; }
+
+.icon--sun { display: none; }
+:root[data-theme="dark"] .icon--sun { display: block; }
+:root[data-theme="dark"] .icon--moon { display: none; }
+
+/* ---------- Шапка ---------- */
+.hero {
+  padding: 4.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero__name {
+  margin: 0;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+.hero__role {
+  margin: .35rem 0 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hero__exp {
+  margin: .35rem 0 0;
+  font-size: .95rem;
+  color: var(--text-soft);
+}
+
+.hero__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.35rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .95rem;
+  color: var(--text-soft);
+}
+.hero__contacts a:hover { color: var(--accent); text-decoration: none; }
+.hero__contacts .icon { width: 16px; height: 16px; }
+
+/* ---------- Секции ---------- */
+.section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: 0; }
+
+.section__title {
+  margin: 0 0 1.75rem;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+/* ---------- Таймлайн ---------- */
+.job {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.job + .job { margin-top: 2.5rem; }
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* Линия вдоль левого края — для каждого места работы */
+.job::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1.6rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+/* Для всех, кроме последнего, продлеваем линию через отступ,
+   чтобы таймлайн между местами работы был непрерывным */
+.job:not(:last-child)::after {
+  bottom: -2.5rem;
+}
+
+.job__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .25rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.job__company {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.job__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .9rem;
+  margin: 0;
+  font-size: .875rem;
+  color: var(--text-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Проекты ---------- */
+.project + .project { margin-top: 1.5rem; }
+
+.project__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 .6rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.badge {
+  padding: .15rem .55rem;
+  font-size: .72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.project__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: .95rem;
+  color: var(--text-soft);
+}
+.project__list li { margin-bottom: .35rem; }
+.project__list li:last-child { margin-bottom: 0; }
+.project__list li::marker { color: var(--accent); }
+
+/* ---------- Навыки ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: .35rem .8rem;
+  font-size: .875rem;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* ---------- Образование ---------- */
+.edu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .25rem 1rem;
+}
+.edu__school { margin: 0; font-size: 1rem; font-weight: 600; }
+.edu__degree { margin: .15rem 0 0; font-size: .95rem; color: var(--text-soft); }
+.edu__meta   { margin: 0; font-size: .875rem; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+
+/* ---------- Языки ---------- */
+.langs {
+  display: grid;
+  gap: .6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.langs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: .6rem;
+  font-size: .95rem;
+  border-bottom: 1px dashed var(--border);
+}
+.langs li:last-child { padding-bottom: 0; border-bottom: 0; }
+.langs__level { color: var(--text-soft); }
+
+/* ---------- Подвал ---------- */
+.footer {
+  padding: 2rem 0 3rem;
+  font-size: .875rem;
+  color: var(--text-soft);
+}
+.footer p { margin: 0; }
+
+/* ---------- Мобильные ---------- */
+@media (max-width: 560px) {
+  .hero { padding-top: 5rem; }
+  .toolbar { top: .75rem; right: .75rem; }
+  .btn span { display: none; }
+  .btn:not(.btn--icon) { width: 2.5rem; padding: 0; }
+  .job { padding-left: 1.4rem; }
+}
+
+/* ---------- Печать / сохранение в PDF ---------- */
+@media print {
+  :root, :root[data-theme="dark"] {
+    --bg: #fff;
+    --surface: #fff;
+    --text: #000;
+    --text-soft: #333;
+    --border: #ccc;
+    --accent: #000;
+    --accent-soft: #fff;
+  }
+
+  .toolbar { display: none !important; }
+  body { font-size: 10.5pt; line-height: 1.5; }
+  .container { width: 100%; }
+  .hero { padding: 0 0 1.25rem; }
+  .section { padding: 1.25rem 0; }
+  .job { break-inside: avoid; }
+  .project { break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+  .badge { border: 1px solid #999; }
+}
